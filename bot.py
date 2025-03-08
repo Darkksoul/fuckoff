@@ -14,7 +14,7 @@ from typing import Union, Optional, AsyncGenerator
 
 # local imports
 from web import web_app
-from info import LOG_CHANNEL, API_ID, API_HASH, BOT_TOKEN, PORT, BIN_CHANNEL, ADMINS, DATABASE_URL
+from info import LOG_CHANNEL, API_ID, API_HASH, BOT_TOKEN, PORT, ADMINS, DATABASE_URL
 from utils import temp, get_readable_time
 
 # pymongo and database imports
@@ -74,12 +74,6 @@ class Bot(Client):
             await self.send_message(chat_id=LOG_CHANNEL, text=f"<b>{me.mention} Restarted! 🤖</b>")
         except:
             print("Error - Make sure bot admin in LOG_CHANNEL, exiting now")
-            exit()
-        try:
-            m = await self.send_message(chat_id=BIN_CHANNEL, text="Test")
-            await m.delete()
-        except:
-            print("Error - Make sure bot admin in BIN_CHANNEL, exiting now")
             exit()
         for admin in ADMINS:
             await self.send_message(chat_id=admin, text="<b>✅ ʙᴏᴛ ʀᴇsᴛᴀʀᴛᴇᴅ</b>")
